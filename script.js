@@ -114,6 +114,26 @@ class LinkedList {
         return true;
     }
 
+    removeAt(index) {
+        if (index < 0) return null;
+        if (index > this.#_nbNodes - 1) return null;
+        if (index === 0) {
+            let oldHead = this.#_head;
+            this.#_head = this.#_head.nextNode;
+            this.#_nbNodes--;
+            return oldHead;
+        }
+        if (index === this.#_nbNodes - 1) {
+            return this.pop();
+        }
+        let previousNode = this.at(index - 1);
+        let afterNode = this.at(index + 1);
+        let nodeToRemove = this.at(index);
+        previousNode.nextNode = afterNode;
+        this.#_nbNodes--;
+        return nodeToRemove;
+    }
+
     toString() {
         let currentNode = this.#_head;
         let output = "";
@@ -170,30 +190,12 @@ mylist.insertAt("Again", 0);
 mylist.insertAt("Outside", 9);
 console.log(`Size: ${mylist.size()}`);
 console.log(mylist.toString());
-// mylist.prepend(9);
-// mylist.append(10);
-// mylist.append(15);
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// console.log(mylist.pop());
-// let currentNode = mylist.head();
-// while (currentNode !== null) {
-//     console.log(currentNode.value);
-//     currentNode = currentNode.nextNode;
-// }
-
-// console.log(mylist.size());
-// console.log(mylist.head());
-// console.log(mylist.tail());
-// console.log(mylist.at(4));
-// console.log(mylist.at(20));
-// console.log(mylist.at(0));
+console.log(`Node removed: ${mylist.removeAt(0).value}`);
+console.log(mylist.toString());
+console.log(`Node removed: ${mylist.removeAt(5).value}`);
+console.log(mylist.toString());
+console.log(`Node removed: ${mylist.removeAt(6).value}`);
+console.log(mylist.toString());
+console.log(`Node removed: ${mylist.removeAt(10)}`);
+console.log(mylist.toString());
+console.log(`Size: ${mylist.size()}`);
