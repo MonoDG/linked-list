@@ -87,6 +87,33 @@ class LinkedList {
         return null;
     }
 
+    insertAt(value, index) {
+        if (index < 0) return false;
+        if (index > this.#_nbNodes - 1) return false;
+        if (index === 0 && this.#_nbNodes === 0) {
+            this.append(value);
+            return true;
+        }
+        if (index === 0) {
+            let newNode = new Node(value);
+            newNode.nextNode = this.#_head;
+            this.#_head = newNode;
+            this.#_nbNodes++;
+            return true;
+        }
+        if (index === this.#_nbNodes - 1) {
+            this.append(value);
+            return true;
+        }
+        let previousNode = this.at(index - 1);
+        let afterNode = previousNode.nextNode;
+        let newNode = new Node(value);
+        previousNode.nextNode = newNode;
+        newNode.nextNode = afterNode;
+        this.#_nbNodes++;
+        return true;
+    }
+
     toString() {
         let currentNode = this.#_head;
         let output = "";
@@ -137,6 +164,12 @@ console.log(`Contains 22? ${mylist.contains(22)}`);
 console.log(`Contains 100? ${mylist.contains(100)}`);
 console.log(`Finds 255 at index? ${mylist.find(255)}`);
 console.log(`Finds 100 at index? ${mylist.find(100)}`);
+mylist.insertAt("Hello", 3);
+mylist.insertAt("World", 6);
+mylist.insertAt("Again", 0);
+mylist.insertAt("Outside", 9);
+console.log(`Size: ${mylist.size()}`);
+console.log(mylist.toString());
 // mylist.prepend(9);
 // mylist.append(10);
 // mylist.append(15);
