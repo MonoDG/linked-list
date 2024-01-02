@@ -153,49 +153,12 @@ class Node {
     }
 }
 
-let mylist = new LinkedList();
-console.log(mylist.toString());
-// [1, 2, 3, 4, 5, 6, 7].forEach((value) => mylist.append(value));
-// console.log(mylist.toString());
+const mylist = new LinkedList();
 
-mylist.prepend(8);
-mylist.prepend(10);
-mylist.append(3);
+for (let i = 0; i < 100; i++) {
+    mylist.append(Math.floor(Math.random() * 1000));
+}
+
 console.log(mylist.toString());
-console.log(`Size: ${mylist.size()}`);
-console.log(`Head: ${mylist.head().value}`);
-console.log(`Tail: ${mylist.tail().value}`);
-console.log(`At 0: ${mylist.at(0).value}`);
-console.log(`At 1: ${mylist.at(1).value}`);
-console.log(`At 2: ${mylist.at(2).value}`);
-console.log(`Pop: ${mylist.pop().value}`);
-console.log(`Pop: ${mylist.pop().value}`);
-console.log(`Pop: ${mylist.pop().value}`);
-console.log(`Pop: ${mylist.pop()}`);
-console.log(mylist.toString());
-mylist.append(4);
-mylist.append(16);
-mylist.append(255);
-mylist.append(22);
-mylist.prepend(11);
-mylist.prepend(6);
-console.log(mylist.toString());
-console.log(`Contains 22? ${mylist.contains(22)}`);
-console.log(`Contains 100? ${mylist.contains(100)}`);
-console.log(`Finds 255 at index? ${mylist.find(255)}`);
-console.log(`Finds 100 at index? ${mylist.find(100)}`);
-mylist.insertAt("Hello", 3);
-mylist.insertAt("World", 6);
-mylist.insertAt("Again", 0);
-mylist.insertAt("Outside", 9);
-console.log(`Size: ${mylist.size()}`);
-console.log(mylist.toString());
-console.log(`Node removed: ${mylist.removeAt(0).value}`);
-console.log(mylist.toString());
-console.log(`Node removed: ${mylist.removeAt(5).value}`);
-console.log(mylist.toString());
-console.log(`Node removed: ${mylist.removeAt(6).value}`);
-console.log(mylist.toString());
-console.log(`Node removed: ${mylist.removeAt(10)}`);
-console.log(mylist.toString());
-console.log(`Size: ${mylist.size()}`);
+
+console.log(mylist.contains(352));
